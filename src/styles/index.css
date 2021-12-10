@@ -1,12 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+body{
+overflow-x: hidden;
+background-color: #FCD1D1;
+}
 
-/* 
+#putofondo   {
+background-color: #FCD1D1;
+font-family: 'Roboto Slab', serif;
+height: 100%;
+margin-right: 25%;
+margin-left: 25%;
+margin-top:10%;
+padding: 16px;
+border-radius: 20px;
+box-shadow: 4px 3px 7px 2px #D3E0DC;
+}
+.title { 
+margin: 30px;
+letter-spacing: 2px;
+color: #494a4b;
+-webkit-text-stroke-color: whitesmoke;
+-webkit-text-stroke-width: 1.5px;
+}
 
-    You can write your own styles here...
     
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+input.warning{
+    background: #FFB37B;
+}
+.list.warningToo{
+    background: #FFB37B;
+}
+input { 
+    margin-top: 25px; 
+    border: 0;
+    background-color: #AEE1E1;
+    font-family: 'Roboto Slab', serif;
+    font-size: 25px;
+    padding: 10px 10px;
+    width: 70%;
+    color: #494a4b;
+}
+button {
+       padding: 5px ;
+    font-family: 'Roboto Slab', serif;
+    color: white;
+    font-size: 8px;
+}
+.trash{
+    color:#646668;
+}
+span {
+  margin-right:15px;
+}
+ul li {
+    text-align: left;   
+    margin: 20px 10px;
+    font-size: 1.4rem;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    color: #494a4b;
+    list-style-type: none;
+}

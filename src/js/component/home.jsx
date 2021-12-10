@@ -1,24 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import TaskList from "./TaskList.jsx";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+	const [tasks, setTasks] = useState([
+		"Procastinar",
+		"Hacer los proyectos pendientes de 4geeks",
+	]);
+	const [newTask, setNewTask] = useState("");
+	const [taskExists, setTaskExists] = useState(false);
+
+	function newTaskAdd(event) {
+		setNewTask(event.target.value);
+	}
+	function addNewOne(event) {
+		if (event.key === "Enter") {
+			let position = tasks.findIndex((task) => task === newTask);
+			if (position === -1) {
+				setTasks([...tasks, newTask]);
+				setNewTask("");
+			} else {
+				setTaskExists(true);
+			}
+		}
+	}
+
+	useEffect(() => {
+		let position = tasks.findIndex((task) => task === newTask);
+		if (position === -1) {
+			setTaskExists(false);
+		} else {
+			setTaskExists(true);
+		}
+	}, [newTask]);
+
+	function deleteTask(indexToRemove) {
+		setTasks(tasks.filter((task, index) => index !== indexToRemove));
+	}
+
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container-fluid">
+			<div className="jumbotron lista text-center" id="putofondo">
+				<h1 className="mt-5 title">Welcome to my to do List!</h1>
+				<input
+					className={taskExists ? "warning" : " "}
+					type="text"
+					placeholder="¿alguna tarea pendiente?"
+					onChange={newTaskAdd}
+					onKeyDown={addNewOne}
+					value={newTask}
+				/>
+				<ul className="list-item">
+					{tasks.map((task, index) => (
+						<TaskList
+							key={index}
+							task={task}
+							newTask={newTask}
+							index={index}
+							deleteTask={deleteTask}
+						/>
+					))}
+				</ul>
+			</div>
 		</div>
 	);
 };
